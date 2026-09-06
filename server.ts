@@ -3833,4 +3833,4 @@ function checkPrivacyAllowed(
   }
 
 // Ekspor startServer atau app agar bisa diakses oleh api/index.ts
-export default startServer;
+module.exports = startServer;
