@@ -3821,9 +3821,16 @@ function checkPrivacyAllowed(
     });
   }
 
-  app.listen(PORT, "0.0.0.0", () => {
-    console.log(`Telegram Server is running on http://localhost:${PORT}`);
-  });
+  // Jalankan startServer() hanya jika dijalankan secara lokal, bukan di Vercel
+  if (process.env.NODE_ENV !== "production" && !process.env.VERCEL) {
+  startServer();
 }
 
-startServer();
+  if (!process.env.VERCEL) {
+    app.listen(PORT, "0.0.0.0", () => {
+      console.log(`Telegram Server is running on http://localhost:${PORT}`);
+    });
+  }
+
+export default startServer;
+
