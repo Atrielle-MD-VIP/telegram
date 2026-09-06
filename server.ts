@@ -3821,10 +3821,10 @@ function checkPrivacyAllowed(
     });
   }
 
-  // Jalankan startServer() hanya jika dijalankan secara lokal, bukan di Vercel
-  if (process.env.NODE_ENV !== "production" && !process.env.VERCEL) {
-  startServer();
-}
+  // Jalankan server secara lokal jika bukan di Vercel
+  if (!process.env.VERCEL) {
+    startServer();
+  }
 
   if (!process.env.VERCEL) {
     app.listen(PORT, "0.0.0.0", () => {
@@ -3832,5 +3832,5 @@ function checkPrivacyAllowed(
     });
   }
 
+// Ekspor startServer atau app agar bisa diakses oleh api/index.ts
 export default startServer;
-
